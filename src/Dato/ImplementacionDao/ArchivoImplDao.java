@@ -1,6 +1,6 @@
 package Dato.ImplementacionDao;
 
-import Dato.Clase.ArchivoPdf;
+import Dato.Clase.Archivo;
 import Dato.Clase.Estado;
 import Dato.Clase.Usuario;
 import Dato.InterfaceDao.pdfDao;
@@ -16,15 +16,15 @@ import java.util.Vector;
  * @fecha: 03/01/2022
  * @author Llaguento Carlos Cesar JK
  */
-public class ArchivoPdfImplDao implements pdfDao {
+public class ArchivoImplDao implements pdfDao {
 
     private PreparedStatement pst;
     private Statement st;
     private CallableStatement cst;
     private Connection con;
-    private ArchivoPdf objArchivoPdf;
+    private Archivo objArchivoPdf;
 
-    public ArchivoPdfImplDao(Connection con) {
+    public ArchivoImplDao(Connection con) {
         this.con = con;
     }
 
@@ -44,16 +44,16 @@ public class ArchivoPdfImplDao implements pdfDao {
 
     @Override
     public boolean grabar(Object object) throws SQLException {
-        objArchivoPdf = (ArchivoPdf) object;
+        objArchivoPdf = (Archivo) object;
         try {
             String sql = "{CALL,pro_registrar_archivo(?,?,?,?,?,?,?,?)}";
             cst = con.prepareCall(sql);
             cst.setString(1, objArchivoPdf.getUsuar());
             cst.setString(2, objArchivoPdf.getDestino());
-            cst.setString(3, objArchivoPdf.getNompdf());
+            cst.setString(3, objArchivoPdf.getTitulo());
             cst.setString(4, objArchivoPdf.getAsunto());
             cst.setString(5, objArchivoPdf.getDescrip());
-            cst.setBytes(6, objArchivoPdf.getPdf());
+            cst.setString(6, objArchivoPdf.getArchivo());
             cst.setString(7, objArchivoPdf.getEstado());
             cst.setString(8, objArchivoPdf.getEst());
             cst.execute();
@@ -72,16 +72,16 @@ public class ArchivoPdfImplDao implements pdfDao {
 
     @Override
     public boolean modificar(Object object) throws SQLException {
-    objArchivoPdf = (ArchivoPdf) object;
+    objArchivoPdf = (Archivo) object;
         try {
             String sql = "{CALL,pro_modificar_archivo(?,?,?,?,?,?,?,?,?)}";
             cst = con.prepareCall(sql);
             cst.setString(1, objArchivoPdf.getUsuar());
             cst.setString(2, objArchivoPdf.getDestino());
-            cst.setString(3, objArchivoPdf.getNompdf());
+            cst.setString(3, objArchivoPdf.getTitulo());
             cst.setString(4, objArchivoPdf.getAsunto());
             cst.setString(5, objArchivoPdf.getDescrip());
-            cst.setBytes(6, objArchivoPdf.getPdf());
+            cst.setString(6, objArchivoPdf.getArchivo());
             cst.setString(7, objArchivoPdf.getEstado());
             cst.setString(8, objArchivoPdf.getEst());
             cst.setInt(9, objArchivoPdf.getIdpdf());

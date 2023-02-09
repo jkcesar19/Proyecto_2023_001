@@ -1,7 +1,6 @@
 package Vista;
 
 import Dato.Clase.Inicio;
-import Dato.ImplementacionDao.TablaDao;
 import Dato.TextPrompt;
 import Negocio.InicioBo;
 import java.awt.Color;

@@ -3,6 +3,7 @@ package Vista;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.time.LocalDate;
+import javax.swing.JFrame;
 
 /**
  * @fecha: 28 - 12 - 2022
@@ -17,7 +18,8 @@ public class Dashboard extends javax.swing.JFrame {
     
     public static String adm;
     public static String usuaa;
-    public static byte[] bite = null;
+    public static String archi;
+    public static String foto;
     
     int xMouse;
     int yMouse;
@@ -63,8 +65,9 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jpRegistro = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jpUsuario = new javax.swing.JPanel();
+        btn_usuario = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        imageAvatar1 = new Vista.ImageAvatar();
         Header = new javax.swing.JPanel();
         jlabAdmin = new javax.swing.JLabel();
         jlfecha = new javax.swing.JLabel();
@@ -88,8 +91,8 @@ public class Dashboard extends javax.swing.JFrame {
         app_name.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         app_name.setForeground(new java.awt.Color(255, 255, 255));
         app_name.setText("System");
-        Menu.add(app_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
-        Menu.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 160, 10));
+        Menu.add(app_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
+        Menu.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 160, 10));
 
         jpPrincipal.setBackground(new java.awt.Color(0, 128, 0));
         jpPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -111,7 +114,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel4.setText("Principal");
         jpPrincipal.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 160, 30));
 
-        Menu.add(jpPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 250, 50));
+        Menu.add(jpPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 250, 50));
 
         jpReporte.setBackground(new java.awt.Color(10, 95, 1));
         jpReporte.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,7 +151,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Menu.add(jpReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, -1, 50));
+        Menu.add(jpReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, -1, 50));
 
         jpMovimiento.setBackground(new java.awt.Color(10, 95, 1));
         jpMovimiento.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -185,7 +188,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Menu.add(jpMovimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, -1, 50));
+        Menu.add(jpMovimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, -1, 50));
 
         jpRegistro.setBackground(new java.awt.Color(10, 95, 1));
         jpRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -222,18 +225,18 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Menu.add(jpRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, -1, 50));
+        Menu.add(jpRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, -1, 50));
 
-        jpUsuario.setBackground(new java.awt.Color(10, 95, 1));
-        jpUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_usuario.setBackground(new java.awt.Color(10, 95, 1));
+        btn_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jpUsuarioMouseEntered(evt);
+                btn_usuarioMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jpUsuarioMouseExited(evt);
+                btn_usuarioMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jpUsuarioMousePressed(evt);
+                btn_usuarioMousePressed(evt);
             }
         });
 
@@ -242,24 +245,27 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/menu/usuario.png"))); // NOI18N
         jLabel1.setText("Usuario");
 
-        javax.swing.GroupLayout jpUsuarioLayout = new javax.swing.GroupLayout(jpUsuario);
-        jpUsuario.setLayout(jpUsuarioLayout);
-        jpUsuarioLayout.setHorizontalGroup(
-            jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpUsuarioLayout.createSequentialGroup()
+        javax.swing.GroupLayout btn_usuarioLayout = new javax.swing.GroupLayout(btn_usuario);
+        btn_usuario.setLayout(btn_usuarioLayout);
+        btn_usuarioLayout.setHorizontalGroup(
+            btn_usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btn_usuarioLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(63, Short.MAX_VALUE))
         );
-        jpUsuarioLayout.setVerticalGroup(
-            jpUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpUsuarioLayout.createSequentialGroup()
+        btn_usuarioLayout.setVerticalGroup(
+            btn_usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_usuarioLayout.createSequentialGroup()
                 .addContainerGap(14, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        Menu.add(jpUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, 50));
+        Menu.add(btn_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, -1, 50));
+
+        imageAvatar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/perfil.jpeg"))); // NOI18N
+        Menu.add(imageAvatar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 250, 130));
 
         Dashboard.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 680));
 
@@ -458,13 +464,13 @@ public class Dashboard extends javax.swing.JFrame {
         this.jpPrincipal.setBackground(new Color(10, 95, 1));
     }//GEN-LAST:event_jpPrincipalMouseExited
 
-    private void jpUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuarioMouseEntered
-        this.jpUsuario.setBackground(new Color(0, 128, 0));
-    }//GEN-LAST:event_jpUsuarioMouseEntered
+    private void btn_usuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_usuarioMouseEntered
+        this.btn_usuario.setBackground(new Color(0, 128, 0));
+    }//GEN-LAST:event_btn_usuarioMouseEntered
 
-    private void jpUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuarioMouseExited
-        this.jpUsuario.setBackground(new Color(10, 95, 1));
-    }//GEN-LAST:event_jpUsuarioMouseExited
+    private void btn_usuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_usuarioMouseExited
+        this.btn_usuario.setBackground(new Color(10, 95, 1));
+    }//GEN-LAST:event_btn_usuarioMouseExited
 
     private void jpRegistroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpRegistroMouseEntered
         this.jpRegistro.setBackground(new Color(0, 128, 0));
@@ -505,8 +511,8 @@ public class Dashboard extends javax.swing.JFrame {
         content.repaint();
     }//GEN-LAST:event_jpPrincipalMousePressed
 
-    private void jpUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpUsuarioMousePressed
-        this.jpUsuario.setBackground(new Color(0, 128, 0));
+    private void btn_usuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_usuarioMousePressed
+        this.btn_usuario.setBackground(new Color(0, 128, 0));
         jpUsuario u1 = new jpUsuario();
         u1.setSize(1039, 521);
         u1.setLocation(0, 0);
@@ -515,7 +521,7 @@ public class Dashboard extends javax.swing.JFrame {
         content.add(u1, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
-    }//GEN-LAST:event_jpUsuarioMousePressed
+    }//GEN-LAST:event_btn_usuarioMousePressed
 
     private void jpRegistroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpRegistroMousePressed
         this.jpRegistro.setBackground(new Color(0, 128, 0));
@@ -595,7 +601,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMouseEntered
 
     private void btn_minMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_minMousePressed
-       
+       this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_btn_minMousePressed
 
     public static void main(String args[]) {
@@ -614,8 +620,10 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel Title;
     private javax.swing.JLabel app_name;
     private javax.swing.JPanel btn_min;
+    public static javax.swing.JPanel btn_usuario;
     public static javax.swing.JPanel content;
     private javax.swing.JLabel exit;
+    private Vista.ImageAvatar imageAvatar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -626,11 +634,10 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jlabAdmin;
     private javax.swing.JLabel jlabPerfil;
     private javax.swing.JLabel jlfecha;
-    private javax.swing.JPanel jpMovimiento;
-    private javax.swing.JPanel jpPrincipal;
-    private javax.swing.JPanel jpRegistro;
-    private javax.swing.JPanel jpReporte;
-    private javax.swing.JPanel jpUsuario;
+    public static javax.swing.JPanel jpMovimiento;
+    public static javax.swing.JPanel jpPrincipal;
+    public static javax.swing.JPanel jpRegistro;
+    public static javax.swing.JPanel jpReporte;
     private javax.swing.JPanel red_squr;
     // End of variables declaration//GEN-END:variables
 

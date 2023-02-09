@@ -57,6 +57,8 @@ public class jpMovimiento extends javax.swing.JPanel {
             }
         ));
         jTableEntrada.setFocusable(false);
+        jTableEntrada.setShowHorizontalLines(false);
+        jTableEntrada.setShowVerticalLines(false);
         jTableEntrada.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableEntradaMouseClicked(evt);

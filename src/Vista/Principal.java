@@ -3,6 +3,7 @@ package Vista;
 import Componete_grafico.ModelChart;
 import Dato.ImplementacionDao.TablaDao;
 import static Vista.Dashboard.importante;
+import static Vista.Dashboard.jpPrincipal;
 import static Vista.Dashboard.no_importante;
 import static Vista.Dashboard.no_urgente;
 import static Vista.Dashboard.urgente;

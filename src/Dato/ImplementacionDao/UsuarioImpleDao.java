@@ -1,7 +1,12 @@
 package Dato.ImplementacionDao;
 
+import Dato.BD.Conexion;
 import Dato.Clase.Usuario;
+import Dato.Clase.UsuarioF;
 import Dato.InterfaceDao.UsuarioDao;
+import Vista.Dashboard;
+import java.awt.Image;
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
+import javax.swing.ImageIcon;
 
 /**
  * @fecha: 30 - 12 - 2022
@@ -26,15 +32,22 @@ public class UsuarioImpleDao implements UsuarioDao {
         this.con = con;
     }
 
+   
+
     @Override
     public Vector Lista() throws SQLException {
+        ImageIcon icono = null;
         Vector listaUsuario = new Vector();
-        String sql = "SELECT * FROM vista_usuario";
+        String sql = "SELECT * FROM vista_usuario_per";
         st = con.createStatement();
         ResultSet rs = st.executeQuery(sql);
         while (rs.next()) {
             Vector usuario = new Vector();
-            usuario.add(rs.getInt("idpersona"));
+            usuario.add(rs.getInt("id"));
+
+            icono = new ImageIcon(get_Image("/Img/" + rs.getString("foto")));
+
+            usuario.add(icono);
             usuario.add(rs.getString("nombre"));
             usuario.add(rs.getString("dni"));
             usuario.add(rs.getString("direccion"));
@@ -96,4 +109,16 @@ public class UsuarioImpleDao implements UsuarioDao {
         }
     }
 
+    public Image get_Image(String ruta) {
+        try {
+            ImageIcon imageIcon = new ImageIcon(getClass().getResource(ruta));
+            Image mainIcon = imageIcon.getImage();
+            return mainIcon;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    
+    
 }

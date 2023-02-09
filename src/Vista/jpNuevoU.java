@@ -4,6 +4,7 @@ import Dato.Clase.Usuario;
 import Dato.TextPrompt;
 import Negocio.UsuarioBo;
 import static Vista.Dashboard.content;
+import static Vista.Dashboard.foto;
 import static Vista.jpUsuario.con;
 import static Vista.jpUsuario.dir;
 import static Vista.jpUsuario.dni;
@@ -17,6 +18,9 @@ import static Vista.jpUsuario.tel;
 import static Vista.jpUsuario.usu;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,65 +45,74 @@ public class jpNuevoU extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        btn_img = new javax.swing.JPanel();
+        jlImagen = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jlabUsuarioR = new javax.swing.JLabel();
-        jtexUsuario = new javax.swing.JTextField();
-        jtexDireccion = new javax.swing.JTextField();
-        jtexNombre = new javax.swing.JTextField();
-        jtexDni = new javax.swing.JTextField();
-        jtexTelefono = new javax.swing.JTextField();
-        jtexContra = new javax.swing.JTextField();
-        jComboBox = new javax.swing.JComboBox<>();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
-        jSeparator6 = new javax.swing.JSeparator();
         btn_volver = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btn_registrar = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jtexNombre = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jtexDni = new javax.swing.JTextField();
+        jtexTelefono = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jtexDireccion = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        jtexUsuario = new javax.swing.JTextField();
+        jtexContra = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jComboBox = new javax.swing.JComboBox<>();
 
         setPreferredSize(new java.awt.Dimension(1039, 520));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_img.setBackground(new java.awt.Color(255, 255, 255));
+        btn_img.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 102, 51)));
+        btn_img.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btn_imgMousePressed(evt);
+            }
+        });
+
+        jlImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/foto.png"))); // NOI18N
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Click para seleccionar imagen");
+
+        javax.swing.GroupLayout btn_imgLayout = new javax.swing.GroupLayout(btn_img);
+        btn_img.setLayout(btn_imgLayout);
+        btn_imgLayout.setHorizontalGroup(
+            btn_imgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btn_imgLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(btn_imgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                    .addComponent(jlImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        btn_imgLayout.setVerticalGroup(
+            btn_imgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btn_imgLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel1.add(btn_img, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 90, 250, 290));
 
         jlabUsuarioR.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jlabUsuarioR.setText("Nuevo registro de usuario");
-
-        jtexUsuario.setBorder(null);
-
-        jtexDireccion.setBorder(null);
-
-        jtexNombre.setBorder(null);
-
-        jtexDni.setBorder(null);
-
-        jtexTelefono.setBorder(null);
-
-        jtexContra.setBorder(null);
-
-        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "activo", "inactivo" }));
-        jComboBox.setBorder(null);
-
-        jSeparator1.setBackground(new java.awt.Color(10, 95, 1));
-        jSeparator1.setForeground(new java.awt.Color(0, 128, 0));
-
-        jSeparator2.setBackground(new java.awt.Color(10, 95, 1));
-        jSeparator2.setForeground(new java.awt.Color(0, 128, 0));
-
-        jSeparator3.setBackground(new java.awt.Color(10, 95, 1));
-        jSeparator3.setForeground(new java.awt.Color(0, 128, 0));
-
-        jSeparator4.setBackground(new java.awt.Color(10, 95, 1));
-        jSeparator4.setForeground(new java.awt.Color(0, 128, 0));
-
-        jSeparator5.setBackground(new java.awt.Color(10, 95, 1));
-        jSeparator5.setForeground(new java.awt.Color(0, 128, 0));
-
-        jSeparator6.setBackground(new java.awt.Color(10, 95, 1));
-        jSeparator6.setForeground(new java.awt.Color(0, 128, 0));
+        jPanel1.add(jlabUsuarioR, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 40, -1, -1));
 
         btn_volver.setBackground(new java.awt.Color(10, 95, 1));
         btn_volver.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -122,6 +135,8 @@ public class jpNuevoU extends javax.swing.JPanel {
         jLabel2.setText("VOLVER");
         btn_volver.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -5, 200, 50));
 
+        jPanel1.add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 406, -1, 40));
+
         btn_registrar.setBackground(new java.awt.Color(10, 95, 1));
         btn_registrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -143,84 +158,118 @@ public class jpNuevoU extends javax.swing.JPanel {
         jLabel3.setText("REGISTRAR");
         btn_registrar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -5, 200, 50));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jlabUsuarioR)
-                        .addComponent(jtexNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jtexDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jtexUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(31, 31, 31)
-                            .addComponent(jtexContra, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(31, 31, 31)
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jtexDni, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(70, 70, 70))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(68, 68, 68)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
-                                .addComponent(jtexTelefono)))))
-                .addGap(94, 94, 94))
+        jPanel1.add(btn_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(755, 406, 200, 40));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jtexNombre.setBorder(null);
+
+        jSeparator1.setBackground(new java.awt.Color(10, 95, 1));
+        jSeparator1.setForeground(new java.awt.Color(0, 128, 0));
+
+        jtexDni.setBorder(null);
+
+        jtexTelefono.setBorder(null);
+
+        jSeparator2.setBackground(new java.awt.Color(10, 95, 1));
+        jSeparator2.setForeground(new java.awt.Color(0, 128, 0));
+
+        jSeparator3.setBackground(new java.awt.Color(10, 95, 1));
+        jSeparator3.setForeground(new java.awt.Color(0, 128, 0));
+
+        jtexDireccion.setBorder(null);
+
+        jSeparator4.setBackground(new java.awt.Color(10, 95, 1));
+        jSeparator4.setForeground(new java.awt.Color(0, 128, 0));
+
+        jtexUsuario.setBorder(null);
+
+        jtexContra.setBorder(null);
+
+        jSeparator5.setBackground(new java.awt.Color(10, 95, 1));
+        jSeparator5.setForeground(new java.awt.Color(0, 128, 0));
+
+        jSeparator6.setBackground(new java.awt.Color(10, 95, 1));
+        jSeparator6.setForeground(new java.awt.Color(0, 128, 0));
+
+        jComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "activo", "inactivo" }));
+        jComboBox.setBorder(null);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtexDireccion)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtexDni, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(jSeparator2))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtexTelefono)
+                            .addComponent(jSeparator3)))
+                    .addComponent(jtexNombre)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtexUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                            .addComponent(jSeparator5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                            .addComponent(jtexContra))
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator1)
+                    .addComponent(jSeparator4))
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jlabUsuarioR)
-                .addGap(45, 45, 45)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jtexNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtexDni, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtexTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtexDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtexUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtexContra, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(84, 84, 84))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 530));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 680, 300));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1039, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_registrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registrarMouseEntered
@@ -259,23 +308,31 @@ public class jpNuevoU extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_volverMouseExited
 
     private void btn_volverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_volverMousePressed
-       this.llamdo_panel_nuevo();
+        this.llamdo_panel_nuevo();
     }//GEN-LAST:event_btn_volverMousePressed
+
+    private void btn_imgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_imgMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_imgMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel btn_img;
     private javax.swing.JPanel btn_registrar;
     private javax.swing.JPanel btn_volver;
     private javax.swing.JComboBox<String> jComboBox;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JLabel jlImagen;
     private javax.swing.JLabel jlabUsuarioR;
     private javax.swing.JTextField jtexContra;
     private javax.swing.JTextField jtexDireccion;
@@ -330,13 +387,17 @@ private void plaseholder() {
             this.jtexUsuario.setText(usu);
             this.jtexTelefono.setText(tel);
             this.jComboBox.setSelectedItem(est);
+            ImageIcon imagen = new ImageIcon("src/Img/"+foto);
+            Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(226,248, Image.SCALE_DEFAULT));
+            jlImagen.setIcon(icono);    
+
         } else {
             this.limpiarcampos();
         }
 
     }
 
-    private void modificar() {  
+    private void modificar() {
         this.cargar_obj();
         try {
             if (UsuarioBo.modificarUsuario(objUsiario)) {
@@ -367,7 +428,7 @@ private void plaseholder() {
         objUsiario.setTelefono(this.jtexTelefono.getText());
         objUsiario.setUsuario(this.jtexUsuario.getText());
         objUsiario.setContra(this.jtexContra.getText());
-        objUsiario.setEstado(this.jComboBox.getSelectedItem().toString()); 
+        objUsiario.setEstado(this.jComboBox.getSelectedItem().toString());
     }
 
     private void llamdo_panel_nuevo() {

@@ -22,6 +22,7 @@ public class UsuarioBo {
             Vector datoUsuario = usuarioDao.Lista();
             Vector columnas = new Vector();
             columnas.add("ID");
+            columnas.add("Foto");
             columnas.add("Nombres");
             columnas.add("DNI");
             columnas.add("Dirección");

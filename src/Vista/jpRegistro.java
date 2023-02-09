@@ -256,6 +256,7 @@ public class jpRegistro extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9"
             }
         ));
+        jTablePdf.setShowVerticalLines(false);
         jTablePdf.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTablePdfMouseClicked(evt);

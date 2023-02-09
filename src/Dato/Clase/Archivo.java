@@ -4,14 +4,14 @@ package Dato.Clase;
  * @fecha: 01/02/2023
  * @author Llaguento Carlos Cesar Jk
  */
-public class ArchivoPdf {
+public class Archivo {
 private int idpdf;
 private String usuar;
 private String destino;
-private String nompdf;
+private String titulo;
 private String asunto;
 private String descrip;
-private byte[] pdf;
+private String archivo;
 private String estado;
 private String est;
 
@@ -39,13 +39,14 @@ private String est;
         this.destino = destino;
     }
 
-    public String getNompdf() {
-        return nompdf;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNompdf(String nompdf) {
-        this.nompdf = nompdf;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
+
 
     public String getAsunto() {
         return asunto;
@@ -63,13 +64,14 @@ private String est;
         this.descrip = descrip;
     }
 
-    public byte[] getPdf() {
-        return pdf;
+    public String getArchivo() {
+        return archivo;
     }
 
-    public void setPdf(byte[] pdf) {
-        this.pdf = pdf;
+    public void setArchivo(String archivo) {
+        this.archivo = archivo;
     }
+
 
     public String getEstado() {
         return estado;

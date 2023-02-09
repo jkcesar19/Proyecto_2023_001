@@ -6,5 +6,4 @@ package Dato.InterfaceDao;
  * @author: llaguento Carlos Jk Cesar
  */
 public interface UsuarioDao extends GeneralDao{
-    
 }

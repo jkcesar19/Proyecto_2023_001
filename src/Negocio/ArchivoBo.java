@@ -1,8 +1,8 @@
 package Negocio;
 
 import Dato.BD.Conexion;
-import Dato.Clase.ArchivoPdf;
-import Dato.ImplementacionDao.ArchivoPdfImplDao;
+import Dato.Clase.Archivo;
+import Dato.ImplementacionDao.ArchivoImplDao;
 import Dato.InterfaceDao.pdfDao;
 import java.sql.Connection;
 import java.util.Vector;
@@ -18,7 +18,7 @@ public class ArchivoBo {
         DefaultComboBoxModel combox = null;
         Connection con = Conexion.getConexion();
         try {
-            pdfDao usuaDao = new ArchivoPdfImplDao(con);
+            pdfDao usuaDao = new ArchivoImplDao(con);
             Vector vector = usuaDao.Lista();
             combox = new DefaultComboBoxModel(vector);
         } catch (Exception e) {
@@ -35,7 +35,7 @@ public class ArchivoBo {
         DefaultComboBoxModel combox = null;
         Connection con = Conexion.getConexion();
         try {
-            pdfDao estDao = new ArchivoPdfImplDao(con);
+            pdfDao estDao = new ArchivoImplDao(con);
             Vector vector = estDao.Lista1();
             combox = new DefaultComboBoxModel(vector);
         } catch (Exception e) {
@@ -48,12 +48,12 @@ public class ArchivoBo {
         return combox;
     }
 
-    public static boolean grabar_pdf(ArchivoPdf objPdf) throws Exception {
+    public static boolean grabar_pdf(Archivo objPdf) throws Exception {
         Connection con = null;
         try {
             con = Conexion.getConexion();
             con.setAutoCommit(false);
-            pdfDao pdfDao = new ArchivoPdfImplDao(con);
+            pdfDao pdfDao = new ArchivoImplDao(con);
             pdfDao.grabar(objPdf);
             con.commit();
             return true;
@@ -68,12 +68,12 @@ public class ArchivoBo {
         }
     }
 
-    public static boolean modificar_pdf(ArchivoPdf objPdf) throws Exception {
+    public static boolean modificar_pdf(Archivo objPdf) throws Exception {
         Connection con = null;
         try {
             con = Conexion.getConexion();
             con.setAutoCommit(false);
-            pdfDao pdf_dao = new ArchivoPdfImplDao(con);
+            pdfDao pdf_dao = new ArchivoImplDao(con);
             pdf_dao.modificar(objPdf);
             con.commit();
             return true;

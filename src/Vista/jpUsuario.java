@@ -1,13 +1,15 @@
 package Vista;
 
 import Dato.Clase.Usuario;
+import Dato.ImplementacionDao.optener;
 import Dato.TextPrompt;
 import Negocio.UsuarioBo;
+import static Vista.Dashboard.btn_usuario;
 import static Vista.Dashboard.content;
 import static Vista.jpNuevoU.pas;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -21,8 +23,9 @@ public class jpUsuario extends javax.swing.JPanel {
     private DefaultTableModel UsuarioTableModel;
     Usuario oUsuario = new Usuario();
     private int index;
-    public static int id;
-    public static String nom;
+    public static int id = 0;
+    public static String nom = " ";
+    public static Icon icon;
     public static String dni;
     public static String dir;
     public static String tel;
@@ -34,7 +37,8 @@ public class jpUsuario extends javax.swing.JPanel {
     public static String enca;
 
     public jpUsuario() {
-        initComponents();
+        initComponents();   
+        jtableUsuario.fixTable(jScrollPane2);
         loadTableUser();
         plaseholder();
         limpiarpase(pas);
@@ -47,8 +51,6 @@ public class jpUsuario extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtableUsuario = new javax.swing.JTable();
         jtexBuscar = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -61,6 +63,8 @@ public class jpUsuario extends javax.swing.JPanel {
         btn_imprimir = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtableUsuario = new Table.Table();
 
         setPreferredSize(new java.awt.Dimension(1039, 521));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -72,26 +76,6 @@ public class jpUsuario extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("USUARIO");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 31, -1, -1));
-
-        jtableUsuario.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jtableUsuario.setForeground(new java.awt.Color(51, 51, 51));
-        jtableUsuario.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Nombre", "Dirección", "Teléfono", "Usuario", "Contraseña", "Estado"
-            }
-        ));
-        jtableUsuario.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        jtableUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jtableUsuarioMousePressed(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jtableUsuario);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 121, 955, 331));
 
         jtexBuscar.setBorder(null);
         jPanel1.add(jtexBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 69, 837, 34));
@@ -220,6 +204,27 @@ public class jpUsuario extends javax.swing.JPanel {
         jSeparator1.setForeground(new java.awt.Color(0, 128, 0));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 840, 10));
 
+        jtableUsuario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jtableUsuario.setShowVerticalLines(false);
+        jtableUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtableUsuarioMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jtableUsuario);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 970, 290));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 0, 1039, 520));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -245,22 +250,6 @@ public class jpUsuario extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btn_nuevoMousePressed
 
-    private void jtableUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtableUsuarioMousePressed
-        try {
-            index = this.jtableUsuario.getSelectedRow();
-            id = Integer.parseInt(this.jtableUsuario.getValueAt(index, 0).toString());
-            nom = this.jtableUsuario.getValueAt(index, 1).toString();
-            dni = this.jtableUsuario.getValueAt(index, 2).toString();
-            dir = this.jtableUsuario.getValueAt(index, 3).toString();
-            tel = this.jtableUsuario.getValueAt(index, 4).toString();
-            usu = this.jtableUsuario.getValueAt(index, 5).toString();
-            con = this.jtableUsuario.getValueAt(index, 6).toString();
-            est = this.jtableUsuario.getValueAt(index, 7).toString();
-        } catch (Exception e) {
-
-        }
-    }//GEN-LAST:event_jtableUsuarioMousePressed
-
     private void btn_modificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modificarMouseEntered
         this.btn_modificar.setBackground(new Color(0, 128, 0));
     }//GEN-LAST:event_btn_modificarMouseEntered
@@ -272,8 +261,9 @@ public class jpUsuario extends javax.swing.JPanel {
     private void btn_modificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modificarMousePressed
         if (nom != " ") {
             try {
+                optener_foto();
                 op = 'M';
-                 enca = "MODIFICAR UN USUARIO";
+                enca = "MODIFICAR UN USUARIO";
                 estado = true;
 
                 jpNuevoU p1 = new jpNuevoU();
@@ -331,6 +321,23 @@ public class jpUsuario extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_buscarMousePressed
 
+    private void jtableUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtableUsuarioMouseClicked
+        try {
+            index = this.jtableUsuario.getSelectedRow();
+            id = Integer.parseInt(this.jtableUsuario.getValueAt(index, 0).toString());
+            icon = (Icon) this.jtableUsuario.getValueAt(index, 1);
+            nom = this.jtableUsuario.getValueAt(index, 2).toString();
+            dni = this.jtableUsuario.getValueAt(index, 3).toString();
+            dir = this.jtableUsuario.getValueAt(index, 4).toString();
+            tel = this.jtableUsuario.getValueAt(index, 5).toString();
+            usu = this.jtableUsuario.getValueAt(index, 6).toString();
+            con = this.jtableUsuario.getValueAt(index, 7).toString();
+            est = this.jtableUsuario.getValueAt(index, 9).toString();
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_jtableUsuarioMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btn_buscar;
@@ -345,9 +352,9 @@ public class jpUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jtableUsuario;
+    private Table.Table jtableUsuario;
     private javax.swing.JTextField jtexBuscar;
     // End of variables declaration//GEN-END:variables
 
@@ -381,27 +388,39 @@ public class jpUsuario extends javax.swing.JPanel {
     }
 
     private void personalizarJtable() {
-        this.jtableUsuario.getTableHeader().setFont(new Font("Cesar", Font.PLAIN, 12));
-        this.jtableUsuario.getTableHeader().setOpaque(false);
-        this.jtableUsuario.getTableHeader().setBackground(new Color(255, 255, 255));
-        this.jtableUsuario.getTableHeader().setForeground(Color.BLACK);
 
-        this.jtableUsuario.getColumnModel().getColumn(0).setMinWidth(30);
-        this.jtableUsuario.getColumnModel().getColumn(0).setMaxWidth(30);
+        this.jtableUsuario.getColumnModel().getColumn(0).setMinWidth(40);
+        this.jtableUsuario.getColumnModel().getColumn(0).setMaxWidth(40);
+
+        this.jtableUsuario.getColumnModel().getColumn(1).setMinWidth(60);
+        this.jtableUsuario.getColumnModel().getColumn(1).setMaxWidth(60);
+
+        this.jtableUsuario.getColumnModel().getColumn(2).setMinWidth(200);
+        this.jtableUsuario.getColumnModel().getColumn(2).setMaxWidth(200);
+//
+//        this.jtableUsuario.getColumnModel().getColumn(3).setMinWidth(80);
+//        this.jtableUsuario.getColumnModel().getColumn(3).setMaxWidth(80);
+
+        this.jtableUsuario.getColumnModel().getColumn(4).setMinWidth(200);
+        this.jtableUsuario.getColumnModel().getColumn(4).setMaxWidth(200);
+//
+//        this.jtableUsuario.getColumnModel().getColumn(5).setMinWidth(80);
+//        this.jtableUsuario.getColumnModel().getColumn(5).setMaxWidth(80);
+//
+//        this.jtableUsuario.getColumnModel().getColumn(6).setMinWidth(80);
+//        this.jtableUsuario.getColumnModel().getColumn(6).setMaxWidth(80);
         
-        this.jtableUsuario.getColumnModel().getColumn(2).setMinWidth(80);
-        this.jtableUsuario.getColumnModel().getColumn(2).setMaxWidth(80);
+        this.jtableUsuario.getColumnModel().getColumn(7).setMinWidth(80);
+        this.jtableUsuario.getColumnModel().getColumn(7).setMaxWidth(80);
 
-        this.jtableUsuario.getColumnModel().getColumn(4).setMinWidth(80);
-        this.jtableUsuario.getColumnModel().getColumn(4).setMaxWidth(80);
-
-        this.jtableUsuario.getColumnModel().getColumn(5).setMinWidth(60);
-        this.jtableUsuario.getColumnModel().getColumn(5).setMaxWidth(60);
-
-        this.jtableUsuario.getColumnModel().getColumn(6).setMinWidth(70);
-        this.jtableUsuario.getColumnModel().getColumn(6).setMaxWidth(70);
-
-        this.jtableUsuario.getColumnModel().getColumn(7).setMinWidth(60);
-        this.jtableUsuario.getColumnModel().getColumn(7).setMaxWidth(60);
+        this.jtableUsuario.getColumnModel().getColumn(8).setMinWidth(100);
+        this.jtableUsuario.getColumnModel().getColumn(8).setMaxWidth(100);
     }
+
+    private void optener_foto() throws Exception {
+        optener op = new optener();
+        op.obtener_pdf(id);
+    }
+
+   
 }
